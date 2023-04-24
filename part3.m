@@ -36,7 +36,7 @@ title('xh restricted to [0.1 s: 0.35 s], Hello World!');
 % x restricted to [HH]
 xhh=x(0.1*Fs: 0.15*Fs);
 khh=0.1*Fs: 0.15*Fs;
-%sound(xhh, Fs);
+sound(xhh, Fs);
 
 % x restricted to [AH]
 xah=x(0.15*Fs:0.20*Fs);
