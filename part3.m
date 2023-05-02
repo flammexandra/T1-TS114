@@ -32,7 +32,7 @@ xh=x(0.1*Fs: 0.35*Fs);
 kh=0.1*Fs: 0.35*Fs;
 %sound(xh, Fs);
 
-figure(2);
+figure;
 plot(kh, xh);
 title('xh restricted to [0.1 s: 0.35 s], Hello World!');
 
@@ -57,7 +57,7 @@ xow=x(0.23*Fs:0.35*Fs);
 kow=0.23*Fs: 0.35*Fs;
 %sound(xow, Fs);
 
-figure(3);
+figure;
 plot(khh, xhh, kah, xah, kl, xl, kow, xow);
 legend("[HH]", "[AH]", "[L]", "[OW]");
 title('xhh restricted to [0.1 s, 0.15 s], unvoiced');
@@ -74,7 +74,7 @@ f_TFD1 = linspace(-(Fs/2),((Fs/2)-1), N);
 
 Xfftshift1=fftshift(Xfft1);
 
-figure(5);
+figure;
 plot(f_TFD1, abs(Xfftshift1));
 
 % TFD x2
@@ -83,12 +83,57 @@ f_TFD2 = linspace(-(Fs/2),((Fs/2)-1), N);
 
 Xfftshift2=fftshift(Xfft2);
 
-figure(6);
+figure;
 plot(f_TFD2, abs(Xfftshift2));
 
-% Question 5
+% Question 5/6/7
+%hamming
+N = 441;
+d = 441;
+N_fft = 1024;
+w = hamming(N);
+
+%On veut voir que les 4kHz
+f0 = 4000;
+
+[Sx, f, t] = spectro(x,w,d,N_fft,Fs);
+
+% On convertit l'axe des y en frequence
+
+f_stop = (f0*N_fft)/Fs;
+
+figure;
+subplot(3,1,1);
+imagesc((t), (0:f),log(Sx(1:f_stop,1:80)));
+title("spectrogram with window=hamming and N=441");
+xlabel("time");
+ylabel("frequences");
+
+N = 882;
+w = hamming(N);
+
+[Sx, f, t] = spectro(x,w,d,N_fft,Fs);
+
+subplot(3,1,2);
+imagesc((t), (0:f),log(Sx(1:f_stop,1:80)));
+title("spectrogram with window=hamming and N=882");
+xlabel("time");
+ylabel("frequences");
 
 
+%ones
+N = 441;
+w = ones(1,N); 
+
+[Sx, f, t] = spectro(x,w,d,N_fft,Fs);
+
+subplot(3,1,3)
+imagesc((t), (0:f),log(Sx(1:f_stop,1:80)));
+title("spectrogram with window=ones and N=441");
+xlabel("time");
+ylabel("frequences");
+
+%Comment il n'y a pas de fenetre de ponderation on perd quelque details
 
 
 
