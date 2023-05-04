@@ -1,9 +1,9 @@
-function [mfcc] = mfcc_arm(x,w,d,N_fft, N_mfcc)
+function [mfcc] = mfcc_arm(x,w,d,N_fft,N_mfcc)
 
     [X, f, t] = stft(x,w,d,N_fft,Fs);
-    [H, f] = compute_filter_bank( P, K, R, fs)
+    [H, f] = compute_filter_bank(P, K, R, fs);
     
-    L=length(H(1,:));
+    L=length(H(1,:)); %Peut etre que c'est K
     M=floor(length(x)/d)-1;
     S_f=zeros(L,P);
     E=length(P,M);
