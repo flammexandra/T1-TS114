@@ -1,5 +1,4 @@
-function 
-   
+function [mfcc] = mfcc_arm(x,w,d,N_fft, N_mfcc)
     [X, f, t] = stft(x,w,d,N_fft,Fs);
     [H, f] = compute_filter_bank( P, K, R, fs)
     
