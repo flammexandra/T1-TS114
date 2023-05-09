@@ -1,14 +1,19 @@
 close all; % Resets matlab workspace
 close all; % Close every open figure
 clear all;
-clc; % clear the command window
 
+%% Part 4 : Feature extraction
 
-%% 4.1 Voiced/Voiceless flag and pitch
+% 4.1 Voiced/Voiceless flag and pitch
 
-% Question 10
+% Question 8 : code "autocorr.m"
+
+% Question 9 : code "isvoiced.m"
+
+% Question 10 : 
 
     
+
 %one1
 load('data/one1.mat');
 one1_compute=compute(one1,Fs);
