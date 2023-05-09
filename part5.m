@@ -7,4 +7,4 @@ load("data/train_1.mat");
 [matF] = train_classifier(data_2,train_1,Fs);
 
 figure;
-plot(matF);
+plot(matF(:,1));
