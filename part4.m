@@ -1,6 +1,65 @@
 close all; % Resets matlab workspace
 close all; % Close every open figure
+clear all;
 clc; % clear the command window
+
+
+%% 4.1 Voiced/Voiceless flag and pitch
+
+% Question 10
+
+    
+%one1
+load('/Users/alexandramony/Documents/TS114-project/ts114-19425/data/one1.mat');
+one1_compute=compute(one1,Fs);
+
+
+
+%one2
+load('/Users/alexandramony/Documents/TS114-project/ts114-19425/data/one2.mat');
+one2_compute=compute(one2,Fs);
+
+
+
+t = tiledlayout(2,2);
+nexttile
+plot(one1_compute(1,:),"o","MarkerSize", 8, "LineWidth", 2);
+hold on;
+plot(one2_compute(1,:),"x","MarkerSize", 8, "LineWidth", 2);
+title('Voiced Flag One');
+legend('One1', 'One2');
+
+nexttile
+plot(one1_compute(2,:),"o","MarkerSize", 8, "LineWidth", 2);
+hold on;
+plot(one2_compute(2,:),"x","MarkerSize", 8, "LineWidth", 2);
+title('Pitch One');
+legend('One1', 'One2');
+
+
+%two1
+load('/Users/alexandramony/Documents/TS114-project/ts114-19425/data/two1.mat');
+two1_compute=compute(two1,Fs);
+
+
+%two2
+load('/Users/alexandramony/Documents/TS114-project/ts114-19425/data/two2.mat');
+two2_compute=compute(two2,Fs);
+
+nexttile
+plot(two1_compute(1,:),"o","MarkerSize", 8, "LineWidth", 2);
+hold on;
+plot(two2_compute(1,:),"x","MarkerSize", 8, "LineWidth", 2);
+title('Voiced Flag Two');
+legend('Two1', 'Two2');
+
+nexttile
+plot(two1_compute(2,:),"o","MarkerSize", 8, "LineWidth", 2);
+hold on;
+plot(two2_compute(2,:),"x","MarkerSize", 8, "LineWidth", 2);
+title('Pitch two');
+legend('Two1', 'Two2');
+
 
 %Question 13
 
