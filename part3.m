@@ -2,65 +2,97 @@ close all; % Resets matlab workspace
 close all; % Close every open figure
 clc; % clear the command window
 
-%% Initialisation of some variables
+%% Time analysis 
+%% Initialisation of variables
 
-%% Start of your processing
-% Question 1
 % Read the samples from HelloWorld.wav
 [x, Fs] = audioread('data/HelloWorld.wav');
 
+% Question 1
 % x restricted to [0.01 s, 0.04 s]
-x1=x(0.01*Fs: 0.04*Fs);
-k1=0.01*Fs:0.04*Fs;
+start1 = 0.01;
+stop1 = 0.04;
+x1=x(start1*Fs: stop1*Fs);
+k1=start1*Fs:stop1*Fs;
 
+% Question 2
+% x restricted to [0.2 s, 0.23 s]
+start2 = 0.2;
+stop2 = 0.23;
+x2=x(start2*Fs: stop2*Fs);
+k2=start2*Fs:stop2*Fs;
+
+% Question 3
+% x restricted to hello 
+start3 = 0.1;
+stop3 = 0.35;
+xh=x(start3*Fs: stop3*Fs);
+kh=start3*Fs: stop3*Fs;
+sound(xh, Fs);
+
+%% Display processing
+
+% Question 1
+% x restricted to [0.01 s, 0.04 s]
 nexttile;
 plot(k1, x1);
 title('x1 restricted to [0.01 s, 0.04 s], unvoiced');
 
 % Question 2
 % x restricted to [0.2 s, 0.23 s]
-x2=x(0.2*Fs: 0.23*Fs);
-k2=0.2*Fs:0.23*Fs;
-
 nexttile;
 plot(k2, x2);
 title('x2 restricted to [0.2 s, 0.23 s], voiced');
 
 % Question 3
-% x restricted to hello 
-xh=x(0.1*Fs: 0.35*Fs);
-kh=0.1*Fs: 0.35*Fs;
-%sound(xh, Fs);
-
+% x restricted to hello
 figure;
 plot(kh, xh);
 title('xh restricted to [0.1 s: 0.35 s], Hello World!');
 
+
+%% Frequencies analysis
+%% Initialisation of variables
+
 % Question 4
 % x restricted to [HH]
-xhh=x(0.1*Fs: 0.15*Fs);
-khh=0.1*Fs: 0.15*Fs;
-%sound(xhh, Fs);
+starthh = 0.1;
+stophh = 0.15;
+xhh=x(starthh*Fs: stophh*Fs);
+khh=starthh*Fs: stophh*Fs;
+% sound(xhh, Fs);
 
 % x restricted to [AH]
-xah=x(0.15*Fs:0.20*Fs);
-kah=0.15*Fs: 0.20*Fs;
-%sound(xah, Fs);
+starthh = 0.15;
+stophh = 0.20;
+xah=x(starthh*Fs:stophh*Fs);
+kah=starthh*Fs: stophh*Fs;
+% sound(xah, Fs);
 
 % x restricted to [L]
-xl=x(0.20*Fs:0.23*Fs);
-kl=0.20*Fs: 0.23*Fs;
+startL = 0.20;
+stopL = 0.23;
+xl=x(startL*Fs:stopL*Fs);
+kl=startL*Fs: stopL *Fs;
 %sound(xl, Fs);
 
 % x restricted to [OW]
-xow=x(0.23*Fs:0.35*Fs);
-kow=0.23*Fs: 0.35*Fs;
+startow = 0.23;
+stopow = 0.35;
+xow=x(startow*Fs:stopow*Fs);
+kow=startow*Fs: stopow*Fs;
 %sound(xow, Fs);
 
+%% Display processing
+
+% Display of 'Hello' cut in 4 parts: "[HH]", "[AH]", "[L]", "[OW]"
 figure;
 plot(khh, xhh, kah, xah, kl, xl, kow, xow);
 legend("[HH]", "[AH]", "[L]", "[OW]");
 title('xhh restricted to [0.1 s, 0.15 s], unvoiced');
+
+%% Short Term Fourier Transform and Spectrogram
+%% Initialisation of variables
 
 % Question 3.3.4
 % Magnitude spectrum of the signal
