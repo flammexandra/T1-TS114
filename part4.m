@@ -18,52 +18,53 @@ clear all;
 % Question 10 : 
 % %% Initialisation of some variables
 % 
-% load('data/one1.mat');   
-% load('data/one2.mat');
-% load('data/two1.mat');
-% load('data/two2.mat');
-% 
-% %% Start of your processing
-% 
-% % The pitch features for each frame 
-% one1_compute=compute(one1,Fs);
-% one2_compute=compute(one2,Fs);
-% two1_compute=compute(two1,Fs);
-% two2_compute=compute(two2,Fs);
-% 
-% 
-% %% Display of processing 
-% 
-% 
-% t = tiledlayout(2,2);
-% nexttile
-% plot(one1_compute(1,:),"o","MarkerSize", 8, "LineWidth", 2);
-% hold on;
-% plot(one2_compute(1,:),"x","MarkerSize", 8, "LineWidth", 2);
-% title('Voiced Flag One');
-% legend('One1', 'One2');
-% 
-% nexttile
-% plot(one1_compute(2,:),"o","MarkerSize", 8, "LineWidth", 2);
-% hold on;
-% plot(one2_compute(2,:),"x","MarkerSize", 8, "LineWidth", 2);
-% title('Pitch One');
-% legend('One1', 'One2');
-% 
-% 
-% nexttile
-% plot(two1_compute(1,:),"o","MarkerSize", 8, "LineWidth", 2);
-% hold on;
-% plot(two2_compute(1,:),"x","MarkerSize", 8, "LineWidth", 2);
-% title('Voiced Flag Two');
-% legend('Two1', 'Two2');
-% 
-% nexttile
-% plot(two1_compute(2,:),"o","MarkerSize", 8, "LineWidth", 2);
-% hold on;
-% plot(two2_compute(2,:),"x","MarkerSize", 8, "LineWidth", 2);
-% title('Pitch two');
-% legend('Two1', 'Two2');
+load('data/one1.mat');   
+load('data/one2.mat');
+load('data/two1.mat');
+load('data/two2.mat');
+
+%% Start of your processing
+
+% The pitch features for each frame 
+one1_compute=compute(one1,Fs);
+one2_compute=compute(one2,Fs);
+two1_compute=compute(two1,Fs);
+two2_compute=compute(two2,Fs);
+
+
+%% Display of processing 
+
+
+
+figure;
+subplot(2,2,1);
+plot(one1_compute(1,:),"o","MarkerSize", 8, "LineWidth", 2);
+hold on;
+plot(one2_compute(1,:),"x","MarkerSize", 8, "LineWidth", 2);
+title('Voiced Flag One');
+legend('One1', 'One2');
+
+subplot(2,2,2);
+plot(one1_compute(2,:),"o","MarkerSize", 8, "LineWidth", 2);
+hold on;
+plot(one2_compute(2,:),"x","MarkerSize", 8, "LineWidth", 2);
+title('Pitch One');
+legend('One1', 'One2');
+
+
+subplot(2,2,3);
+plot(two1_compute(1,:),"o","MarkerSize", 8, "LineWidth", 2);
+hold on;
+plot(two2_compute(1,:),"x","MarkerSize", 8, "LineWidth", 2);
+title('Voiced Flag Two');
+legend('Two1', 'Two2');
+
+subplot(2,2,4);
+plot(two1_compute(2,:),"o","MarkerSize", 8, "LineWidth", 2);
+hold on;
+plot(two2_compute(2,:),"x","MarkerSize", 8, "LineWidth", 2);
+title('Pitch two');
+legend('Two1', 'Two2');
 
 
 %4.2 MFCC
@@ -104,10 +105,19 @@ N_mfcc = 20;
 %% Display of processing 
 
 figure;
-plot(mfcc_one1, mfcc_one2);
-hold on;
-plot(mfcc_feat_one1, mfcc_feat_one2);
-
-figure;
+subplot(2,1,1);
 plot(mfcc_feat_one1(2:end));
+hold on;
+plot(mfcc_feat_one2(2:end));
+title('Mffc features for one');
+legend('One1', 'One2');
+
+subplot(2,1,2);
+plot(mfcc_feat_two1(2:end));
+hold on;
+plot(mfcc_feat_one2(2:end));
+title('Mffc features for two');
+legend('Two1', 'Two2');
+
+
 
