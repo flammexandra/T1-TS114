@@ -1,22 +1,27 @@
 close all; % Resets matlab workspace
 close all; % Close every open figure
 clear all;
-clc; % clear the command window
 
+%% Part 4 : Feature extraction
 
-%% 4.1 Voiced/Voiceless flag and pitch
+% 4.1 Voiced/Voiceless flag and pitch
 
-% Question 10
+% Question 8 : code "autocorr.m"
+
+% Question 9 : code "isvoiced.m"
+
+% Question 10 : 
 
     
+
 %one1
-load('/Users/alexandramony/Documents/TS114-project/ts114-19425/data/one1.mat');
+load('data/one1.mat');
 one1_compute=compute(one1,Fs);
 
 
 
 %one2
-load('/Users/alexandramony/Documents/TS114-project/ts114-19425/data/one2.mat');
+load('data/one2.mat');
 one2_compute=compute(one2,Fs);
 
 
@@ -38,12 +43,12 @@ legend('One1', 'One2');
 
 
 %two1
-load('/Users/alexandramony/Documents/TS114-project/ts114-19425/data/two1.mat');
+load('data/two1.mat');
 two1_compute=compute(two1,Fs);
 
 
 %two2
-load('/Users/alexandramony/Documents/TS114-project/ts114-19425/data/two2.mat');
+load('data/two2.mat');
 two2_compute=compute(two2,Fs);
 
 nexttile
