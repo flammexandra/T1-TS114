@@ -28,11 +28,6 @@ function [mfcc] = mfcc_arm(x,w,d,N_fft,N_mfcc, Fs, P)
             E(j,i)=sum(abs(S_f(j,:)).^2);
         end
     end
-
-    figure;
-    plot(S_f);
-
-    E
     
 
     for a=1:M
