@@ -7,11 +7,11 @@ function [mfcc] = mfcc_arm(x,w,d,N_fft,N_mfcc, Fs, P)
 
     X_abs = abs(X);
    
-    M=floor(length(x)/d)-1;
+    M=size(X_abs,2);%taille de la colonne de X
     S_f=zeros(M,K);
     E=zeros(P,M);
     mfcc=zeros(N_mfcc,M);
-    
+   
     
     for i=1:M
         % col_X=X(1:K,i)';
@@ -35,13 +35,13 @@ function [mfcc] = mfcc_arm(x,w,d,N_fft,N_mfcc, Fs, P)
     E
     
 
-    for a=1:N_mfcc
-        for b=1:M
+    for a=1:M
+        for b=1:N_mfcc
             sum_mffc=0;
             for c=1:P
-                sum_mffc=sum_mffc+log(E(a,b))*cos((pi/P)*b*(a-1/2));
+                sum_mffc=sum_mffc+log(E(c,a))*cos((pi/P)*b*(c-1/2));
             end
-            mfcc(a,b)=((2/P)^1/2)*sum_mffc;
+            mfcc(b,a)=(sqrt(2/P))*sum_mffc;
         end     
     end 
     
