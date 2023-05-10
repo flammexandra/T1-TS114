@@ -94,7 +94,7 @@ N_mfcc = 20;
 [mfcc_one1] = mfcc(one1,w,d,N_fft,N_mfcc, Fs, P);
 [mfcc_one2] = mfcc(one2,w,d,N_fft,N_mfcc, Fs, P);
 [mfcc_two1] = mfcc(one2,w,d,N_fft,N_mfcc, Fs, P);
-[mfcc_one2] = mfcc(one2,w,d,N_fft,N_mfcc, Fs, P);
+[mfcc_two2] = mfcc(one2,w,d,N_fft,N_mfcc, Fs, P);
 
 % mfcc
 [mfcc_feat_one1] = mfcc_features(one1,w,d,N_fft, N_mfcc, Fs, P);
@@ -115,7 +115,7 @@ legend('One1', 'One2');
 subplot(2,1,2);
 plot(mfcc_feat_two1(2:end));
 hold on;
-plot(mfcc_feat_one2(2:end));
+plot(mfcc_feat_two2(2:end));
 title('Mffc features for two');
 legend('Two1', 'Two2');
 
