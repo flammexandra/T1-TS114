@@ -17,7 +17,7 @@ clear all;
 
 % Question 10 : 
 % %% Initialisation of some variables
-% 
+% Load of the datas
 load('data/one1.mat');   
 load('data/one2.mat');
 load('data/two1.mat');
@@ -111,6 +111,8 @@ hold on;
 plot(mfcc_feat_one2(2:end));
 title('Mffc features for one');
 legend('One1', 'One2');
+ylabel('mffc coefficients');
+xlabel('N_(mfcc)');
 
 subplot(2,1,2);
 plot(mfcc_feat_two1(2:end));
@@ -118,6 +120,7 @@ hold on;
 plot(mfcc_feat_two2(2:end));
 title('Mffc features for two');
 legend('Two1', 'Two2');
-
+ylabel('mffc coefficients');
+xlabel('N_(mfcc)');
 
 

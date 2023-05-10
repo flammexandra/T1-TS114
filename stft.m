@@ -1,4 +1,11 @@
 function [X, f, t] = stft(x,w,d,N_fft,Fs)
+% This function computes the stft for m = [0, d, 2d, 3d...]
+% This function outputs are:
+% -> X, which is a matrix of n_fft lines and M columns
+%   M is the number of elements of m
+%   X(i,j) is the value of the spectrogram for time t(i) and frequency f(j)
+% -> f, is a column vector of the frequencies (in Hz)
+% -> t, is a row vector containing the times of the beginning of the windows
 
 % Initialisation of parameters 
 N = length(w); % Length of the winded signal
