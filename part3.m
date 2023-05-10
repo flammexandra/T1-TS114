@@ -37,18 +37,24 @@ sound(xh, Fs);
 nexttile;
 plot(k1, x1);
 title('x1 restricted to [0.01 s, 0.04 s], unvoiced');
+xlabel("frequencies in Hz");
+ylabel("Amplitude");
 
 % Question 2
 % x restricted to [0.2 s, 0.23 s]
 nexttile;
 plot(k2, x2);
 title('x2 restricted to [0.2 s, 0.23 s], voiced');
+xlabel("frequencies in Hz");
+ylabel("Amplitude");
 
 % Question 3
 % x restricted to hello
 figure;
 plot(kh, xh);
 title('xh restricted to [0.1 s: 0.35 s], Hello World!');
+xlabel("frequencies in Hz");
+ylabel("Amplitude");
 
 
 %% Frequencies analysis
@@ -90,57 +96,73 @@ figure;
 plot(khh, xhh, kah, xah, kl, xl, kow, xow);
 legend("[HH]", "[AH]", "[L]", "[OW]");
 title('xhh restricted to [0.1 s, 0.15 s], unvoiced');
+xlabel("frequencies in Hz");
+ylabel("Amplitude");
 
 %% Short Term Fourier Transform and Spectrogram
 %% Initialisation of variables
 
-% Question 3.3.4
-% Magnitude spectrum of the signal
-
-% On definie le nombre de points
+% Question 5
+% Definition of the number of points
 N=1024;
 
 % TDF x1
 Xfft1=fft(x1, N);
 f_TFD1 = linspace(-(Fs/2),((Fs/2)-1), N);
 
-Xfftshift1=fftshift(Xfft1);
-
-figure;
-plot(f_TFD1, abs(Xfftshift1));
-
 % TFD x2
 Xfft2=fft(x2, N);
 f_TFD2 = linspace(-(Fs/2),((Fs/2)-1), N);
 
+%% Start of the processing 
+
+% Question 5
+% TDF x1
+Xfftshift1=fftshift(Xfft1);
+
+% TFD x2
 Xfftshift2=fftshift(Xfft2);
 
+%% Display processing
+
+% TDF x1
+figure;
+plot(f_TFD1, abs(Xfftshift1));
+title('magnitude spectra of x1');
+xlabel("frequencies in Hz");
+ylabel("Magnitude");
+
+% TDF x2
 figure;
 plot(f_TFD2, abs(Xfftshift2));
+title('magnitude spectra of x2');
+xlabel("frquencies in Hz");
+ylabel("Magnitude");
 
-% Question 5/6/7
-%hamming
-N = 441;
+
+%% Test for differents spectrograms
+
+%% Initialisation of variables
 d = 441;
-N_fft = 1024;
+N_fft = 1024; 
+f0 = 4000; % We only want to see the firts 4kHz
+f_stop = (f0*N_fft)/Fs; % We convert the y-axis into frequency
+
+%% Start and display of the processing
+% hamming and N=441
+N = 441;
 w = hamming(N);
 
-%On veut voir que les 4kHz
-f0 = 4000;
-
 [Sx, f, t] = spectro(x,w,d,N_fft,Fs);
-
-% On convertit l'axe des y en frequence
-
-f_stop = (f0*N_fft)/Fs;
 
 figure;
 subplot(3,1,1);
 imagesc((t), (0:f),log(Sx(1:f_stop,1:80)));
 title("spectrogram with window=hamming and N=441");
-xlabel("time");
-ylabel("frequences");
+xlabel("time in secondes");
+ylabel("frequences in Hz");
 
+% hamming and N=882
 N = 882;
 w = hamming(N);
 
@@ -149,11 +171,11 @@ w = hamming(N);
 subplot(3,1,2);
 imagesc((t), (0:f),log(Sx(1:f_stop,1:80)));
 title("spectrogram with window=hamming and N=882");
-xlabel("time");
-ylabel("frequences");
+xlabel("time in seconds");
+ylabel("frequences in Hz");
 
 
-%ones
+% ones and N=441
 N = 441;
 w = ones(1,N); 
 
@@ -162,10 +184,9 @@ w = ones(1,N);
 subplot(3,1,3)
 imagesc((t), (0:f),log(Sx(1:f_stop,1:80)));
 title("spectrogram with window=ones and N=441");
-xlabel("time");
-ylabel("frequences");
+xlabel("time in seconds");
+ylabel("frequences in Hz");
 
-%Comment il n'y a pas de fenetre de ponderation on perd quelque details
 
 
 
