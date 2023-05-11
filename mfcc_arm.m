@@ -9,7 +9,7 @@ function [mfcc] = mfcc(x,w,d,N_fft,N_mfcc, Fs, P)
     X_abs = abs(X); 
    
     % Initialisation of parameters
-    M=size(X_abs,2); %lenth of one column of X
+    M=size(X_abs,2); %length of one column of X
     S_f=zeros(M,K);
     E=zeros(P,M);
     mfcc=zeros(N_mfcc,M);
