@@ -1,10 +1,6 @@
 close all; % Resets matlab workspace
 close all; % Close every open figure
-clear all;
-
-close all; % Resets matlab workspace
-close all; % Close every open figure
-clear all;
+clc;
 
 %% Part 4 : Feature extraction
 
