@@ -90,7 +90,7 @@ N_mfcc = 20;
 
 %% Start of your processing
 
-% mfcc coefficients foe each signal 
+% mfcc coefficients for each signal 
 [mfcc_one1] = mfcc(one1,w,d,N_fft,N_mfcc, Fs, P);
 [mfcc_one2] = mfcc(one2,w,d,N_fft,N_mfcc, Fs, P);
 [mfcc_two1] = mfcc(one2,w,d,N_fft,N_mfcc, Fs, P);
@@ -106,7 +106,7 @@ N_mfcc = 20;
 
 figure;
 subplot(2,1,1);
-plot(mfcc_feat_one1(2:end));
+plot(mfcc_feat_one1(2:end)); % We don't take in the consideration the first value :(2:end)
 hold on;
 plot(mfcc_feat_one2(2:end));
 title('Mffc features for one');
