@@ -90,11 +90,13 @@ N_mfcc = 20;
 
 %% Start of your processing
 
-% mfcc coefficients for each signal 
-[mfcc_one1] = mfcc(one1,w,d,N_fft,N_mfcc, Fs, P);
-[mfcc_one2] = mfcc(one2,w,d,N_fft,N_mfcc, Fs, P);
-[mfcc_two1] = mfcc(one2,w,d,N_fft,N_mfcc, Fs, P);
-[mfcc_two2] = mfcc(one2,w,d,N_fft,N_mfcc, Fs, P);
+
+% mfcc coefficients foe each signal 
+[mfcc_one1] = mfcc_arm(one1,w,d,N_fft,N_mfcc, Fs, P);
+[mfcc_one2] = mfcc_arm(one2,w,d,N_fft,N_mfcc, Fs, P);
+[mfcc_two1] = mfcc_arm(one2,w,d,N_fft,N_mfcc, Fs, P);
+[mfcc_two2] = mfcc_arm(one2,w,d,N_fft,N_mfcc, Fs, P);
+
 
 % mfcc
 [mfcc_feat_one1] = mfcc_features(one1,w,d,N_fft, N_mfcc, Fs, P);
