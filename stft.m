@@ -17,7 +17,7 @@ w = reshape(w, N, 1);
 % Compution of TF
 for j = 1:M
     vect_x = x((j-1)*d + 1:(j-1)*d+N); % Extraction of vectors of x 
-    window = w.*vect_x; % vectors winded by window
+    window = w.*vect_x; % vectors windowed by window
     X(:,j) = fft(window,N_fft); % Compution of TF
 end
 

@@ -12,22 +12,22 @@ clc; % clear the command window
 % x restricted to [0.01 s, 0.04 s]
 start1 = 0.01;
 stop1 = 0.04;
-x1=x(start1*Fs: stop1*Fs);
-k1=start1*Fs:stop1*Fs;
+x1=x(round(start1*Fs): round(stop1*Fs)); % Use of round to have an integer value 
+k1=round(start1*Fs):round(stop1*Fs);
 
 % Question 2
 % x restricted to [0.2 s, 0.23 s]
 start2 = 0.2;
 stop2 = 0.23;
-x2=x(start2*Fs: stop2*Fs);
-k2=start2*Fs:stop2*Fs;
+x2=x(round(start2*Fs): round(stop2*Fs));
+k2=round(start2*Fs):round(stop2*Fs);
 
 % Question 3
 % x restricted to hello 
 start3 = 0.1;
 stop3 = 0.35;
-xh=x(start3*Fs: stop3*Fs);
-kh=start3*Fs: stop3*Fs;
+xh=x(round(start3*Fs): round(stop3*Fs));
+kh=round(start3*Fs): round(stop3*Fs);
 sound(xh, Fs);
 
 %% Display processing
@@ -64,29 +64,29 @@ ylabel("Amplitude");
 % x restricted to [HH]
 starthh = 0.1;
 stophh = 0.15;
-xhh=x(starthh*Fs: stophh*Fs);
-khh=starthh*Fs: stophh*Fs;
+xhh=x(round(starthh*Fs): round(stophh*Fs));
+khh=round(starthh*Fs): round(stophh*Fs);
 % sound(xhh, Fs);
 
 % x restricted to [AH]
 starthh = 0.15;
 stophh = 0.20;
-xah=x(starthh*Fs:stophh*Fs);
-kah=starthh*Fs: stophh*Fs;
+xah=x(round(starthh*Fs):round(stophh*Fs));
+kah=round(starthh*Fs): round(stophh*Fs);
 % sound(xah, Fs);
 
 % x restricted to [L]
 startL = 0.20;
 stopL = 0.23;
-xl=x(startL*Fs:stopL*Fs);
-kl=startL*Fs: stopL *Fs;
+xl=x(round(startL*Fs):round(stopL*Fs));
+kl=round(startL*Fs): round(stopL *Fs);
 %sound(xl, Fs);
 
 % x restricted to [OW]
 startow = 0.23;
 stopow = 0.35;
-xow=x(startow*Fs:stopow*Fs);
-kow=startow*Fs: stopow*Fs;
+xow=x(round(startow*Fs):round(stopow*Fs));
+kow=round(startow*Fs): round(stopow*Fs);
 %sound(xow, Fs);
 
 %% Display processing
@@ -157,7 +157,7 @@ w = hamming(N);
 
 figure;
 subplot(3,1,1);
-imagesc((t), (0:f),log(Sx(1:f_stop,1:80)));
+imagesc((t), (0:f),log(Sx(1:round(f_stop),1:80)));
 title("spectrogram with window=hamming and N=441");
 xlabel("time in secondes");
 ylabel("frequences in Hz");
@@ -169,7 +169,7 @@ w = hamming(N);
 [Sx, f, t] = spectro(x,w,d,N_fft,Fs);
 
 subplot(3,1,2);
-imagesc((t), (0:f),log(Sx(1:f_stop,1:80)));
+imagesc((t), (0:f),log(Sx(1:round(f_stop),1:80)));
 title("spectrogram with window=hamming and N=882");
 xlabel("time in seconds");
 ylabel("frequences in Hz");
@@ -182,7 +182,7 @@ w = ones(1,N);
 [Sx, f, t] = spectro(x,w,d,N_fft,Fs);
 
 subplot(3,1,3)
-imagesc((t), (0:f),log(Sx(1:f_stop,1:80)));
+imagesc((t), (0:f),log(Sx(1:round(f_stop),1:80)));
 title("spectrogram with window=ones and N=441");
 xlabel("time in seconds");
 ylabel("frequences in Hz");
