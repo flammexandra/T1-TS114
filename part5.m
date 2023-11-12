@@ -56,14 +56,14 @@ Cm_test2=cm(matF_test_2,k_test2,matF_train_2);
 %% Display of the processing 
 
 figure;
-subplot(2,2,1);
+subplot(2,1,1);
 imagesc(Cm_test1);
 title("Confusion matrix with success probaility (test1)");
 xlabel("real class");
 ylabel("classified class");
 
 
-subplot(2,2,2);
+subplot(2,1,2);
 imagesc(Cm_test2);
 title("Confusion matrix with success probaility (test2)")
 xlabel("real class");
